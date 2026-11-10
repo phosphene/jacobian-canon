@@ -9,7 +9,7 @@ created: 2026-11-10
 
 A central contribution of `jaccanon` is bridging the gap between local Jacobian differentiation and global dynamical stability.
 
-When analyzing or solving an equilibrium for a vector field $f: \mathbb{R}^n \to \mathbb{R}^n$, the Jacobian $J = \nabla f(x)$ determines the local flow structure. Standard optimization frameworks invariably apply gradient descent or Newton-type methods. When fields possess strong rotational curl (non-conservative components), single-step gradient schemes fail: they cycle endlessly or diverge outward.
+When analyzing or solving an equilibrium for a vector field $f: \mathbb{R}^n \to \mathbb{R}^n$, the Jacobian $J = \nabla f(x)$ determines the local flow structure. Standard optimization frameworks apply gradient descent or Newton-type schemes. In vector fields characterized by non-conservative rotational curl, gradient updates oscillate across periodic limit cycles or diverge into explosive orbits.
 
 ---
 
