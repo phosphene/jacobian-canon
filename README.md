@@ -11,7 +11,7 @@ updated: 2026-11-10
 ---
 
 # `jaccanon` — The Jacobian Canon
-## An Executable Reference Canon for Vector Differentiation, Matrix Decomposition, and Non-Equilibrium Flows
+## Reference Canon for Vector Differentiation, Matrix Decomposition, and Non-Equilibrium Flows
 
 [![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD--3--Clause-blue.svg)](LICENSE)
 [![Python: 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)](pyproject.toml)
@@ -19,13 +19,13 @@ updated: 2026-11-10
 
 ---
 
-## 1. The Epistemic Gap: Algebra Does Not Calculate; Numerical Algorithms Do
+## 1. The tension between algebra and implementation
 
-Theoretical modelers appreciate abstract algebra for its clean, coordinate-free invariants: morphisms compose, functors preserve structure, partially ordered sets formalize causal lineages, and symmetric/antisymmetric operators cleanly partition vector spaces.
+Abstract algebra has clean, coordinate-free invariants: morphisms compose, functors preserve structure, partially ordered sets formalize causal lineages, and symmetric/antisymmetric operators cleanly partition vector spaces.
 
-**However, algebra does not calculate; numerical algorithms do.**
+**However, numerical algorithms approximate.**
 
-When an algebraic specification is ported into executable Python libraries (`scipy`, `numpy`, `jax`, `casadi`), three structural tensions emerge immediately:
+Numerical methods in  Python libraries (`scipy`, `numpy`, `jax`, `casadi`), three structural tensions emerge immediately:
 
 1. **Continuous Algebra vs. Finite-Precision Floating Point (IEEE 754):**
    In algebra, the symmetric operator $S = \frac{1}{2}(J + J^T)$ is exactly self-adjoint ($S = S^T$). In IEEE 754 float64, non-associativity of addition and roundoff noise produce spurious asymmetries that break downstream solvers expecting exact symmetry.
