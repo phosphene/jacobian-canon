@@ -11,7 +11,7 @@ updated: 2026-11-10
 ---
 
 # `jaccanon` — The Jacobian Canon
-## Reference Canon for Vector Differentiation, Matrix Decomposition, and Non-Equilibrium Flows
+## Canonical Numerical Methods for Vector Differentiation, Matrix Decomposition, and Non-Equilibrium Flows
 
 [![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD--3--Clause-blue.svg)](LICENSE)
 [![Python: 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)](pyproject.toml)
@@ -38,7 +38,7 @@ When implementing numerical methods across Python libraries (`scipy`, `numpy`, `
 
 In scientific computing, authors and domain researchers operate in the domain of *Discovery*—proposing novel inferential claims and forward models. The platform and review layer operates in the domain of **underwriting the reliability and insurance of those claims**. Underwriting establishes the quantified validity of computational results before acceptance: defining the explicit operational envelope where reliance holds, pricing proof obligations against failure severity, and restricting coverage strictly to stated, empirically verified regimes.
 
-`jaccanon` realizes this underwriting role through **Design for Testability (DFT)**: providing an **executable reference canon** with an explicit diagnostic contract that quantifies asymptotic truncation error bounds, measures subtractive cancellation loss, and certifies matrix condition stability at execution time.
+`jaccanon` realizes this underwriting role through **Design for Testability (DFT)**: providing **canonical numerical methods** with an explicit diagnostic contract that quantifies asymptotic truncation error bounds, measures subtractive cancellation loss, and certifies matrix condition stability at execution time.
 
 ---
 
@@ -57,13 +57,13 @@ modulo coordinate/gauge freedom. │ with proven error envelopes.
    e.g. J = S + A, <S, A>_F = 0   │    e.g. STDD + Hypothesis tests
                                  │
                                  ▼
-                     Executable Reference Canon
+                     Canonical Numerical Methods
               (Mathematical truth on finite machines)
 ```
 
 | Domain | Definition | Role in `jaccanon` | Failure Mode Without the Other |
 |---|---|---|---|
-| **Algebraic Sense**<br>*(Canonical Form)* | *"The form, usually simplest or most symmetrical, to which, without loss of generality, all functions of the same class can be reduced."* | Unique normal forms: Jordan/Schur, SVD, and Helmholtz matrix splitting ($J = S + A$). | Abstract pencil-and-paper theorem without an executable computational engine. |
+| **Algebraic Sense**<br>*(Canonical Form)* | *"The form, usually simplest or most symmetrical, to which, without loss of generality, all functions of the same class can be reduced."* | Unique normal forms: Jordan/Schur, SVD, and Helmholtz matrix splitting ($J = S + A$). | Abstract pencil-and-paper theorem without a verifiable numerical method. |
 | **Numerical Sense**<br>*(Canonical Implementation)* | The vetted, tested, reproducible reference primitive that becomes the platform foundation. | Functional core, zero I/O, immutable models (`phosphene.core.models.InvariantStatic`), STDD property suites (`Hypothesis`). | Fragile bag of ad-hoc heuristics and arbitrary tolerances without structural grounding. |
 
 ---
@@ -122,7 +122,7 @@ See [docs/diagnostic-contract.md](docs/diagnostic-contract.md) for full details 
 
 ## 5. Intellectual Genealogies
 
-`jaccanon` bridges classical mathematical traditions and structural operator lineages into an executable reference canon (see [docs/genealogies.md](docs/genealogies.md)):
+`jaccanon` bridges classical mathematical traditions and structural operator lineages into canonical numerical methods (see [docs/genealogies.md](docs/genealogies.md)):
 
 ### Foundational Mathematical Lineages
 1. **Order-Theoretic Algebra & The Epistemic Gap:** Preserving partial-order incomparability and lattice structures without forcing artificial total orderings onto IEEE 754 floating-point representations.
@@ -141,7 +141,7 @@ See [docs/diagnostic-contract.md](docs/diagnostic-contract.md) for full details 
 
 ## 6. Empirical Reproductions & Claims Evaluation Suite
 
-`jaccanon` includes an executable reproduction test suite (`tests/test_reproductions.py`) that systematically benchmarks and evaluates the mathematical claims of external engines:
+`jaccanon` includes a method verification test suite (`tests/test_reproductions.py`) that systematically benchmarks and evaluates the mathematical claims of external engines:
 
 | Method / Library Tested | Stated Claim | Empirical Result | Stress / Breakdown Envelope |
 |---|---|---|---|
@@ -206,7 +206,7 @@ All primitives in `jaccanon` are validated against invariant contracts via `Hypo
 ```bibtex
 @software{jaccanon2026,
   author = {Edward Phillips (Phosphene)},
-  title = {jaccanon: An Executable Reference Canon for Vector Differentiation, Matrix Decomposition, and Non-Equilibrium Flows},
+  title = {jaccanon: Canonical Numerical Methods for Vector Differentiation, Matrix Decomposition, and Non-Equilibrium Flows},
   year = {2026},
   url = {https://github.com/phosphene/jacobian-canon}
 }
