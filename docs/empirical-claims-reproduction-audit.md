@@ -7,9 +7,9 @@ created: 2026-11-10
 
 # Empirical Claims Reproduction & Critical Evaluation Audit
 
-To establish `jaccanon` as an authoritative public science reference canon, we must not take external software claims at face value. We empirically reproduce their stated capabilities and systematically stress-test where their claims break down.
+Establishing `jaccanon` as an authoritative public science reference requires rigorous empirical underwriting of existing software implementations. This audit systematically evaluates published capabilities, measures precision ceilings on physical silicon, and maps the operational stability envelopes where algorithms transition between reliable convergence and catastrophic numerical breakdown.
 
-This audit evaluates the three primary lineages documented in `jacobian_landscape_and_genealogies`:
+This audit evaluates the three primary lineages documented in [docs/genealogies.md](genealogies.md):
 1. **Classical Numerical Analysis:** SciPy (`scipy.optimize._numdiff`, 2-point and 3-point stencils)
 2. **Complex-Step Differentiation:** Lyness-Moler holomorphic continuation
 3. **Modern Compiler IR / AD:** PyTorch (`torch.func.jacfwd` / JAX lineage)
