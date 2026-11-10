@@ -7,12 +7,12 @@ created: 2026-11-10
 
 # Scientific Test-Driven Development (STDD) & Invariant Contracts
 
-In classical software development, unit tests compare function outputs against fixed "magic numbers" or precomputed oracle snapshots. In scientific numerical computing, this approach is fundamentally flawed:
-1. It validates only isolated point evaluations.
-2. It fails to test mathematical invariants across continuous domains.
-3. It cannot differentiate between true algorithmic correctness and coincidental error cancellation.
+**Scientific Test-Driven Development (STDD)** establishes verification over continuous mathematical properties rather than point-wise oracle snapshots. Under this discipline, test suites verify continuous invariant contracts across parameter spaces:
+1. Validating global structural behavior across continuous function domains.
+2. Testing mathematical symmetries, dualities, and conservation laws directly.
+3. Distinguishing algorithmic convergence from coincidental error cancellation.
 
-`jaccanon` adheres to **Scientific Test-Driven Development (STDD)**, combining deterministic boundary tests with property-based invariant verification (`Hypothesis`).
+`jaccanon` implements STDD by pairing deterministic boundary tests with property-based invariant verification (`Hypothesis`).
 
 ---
 
@@ -49,7 +49,7 @@ Must satisfy:
 ---
 
 ### Contract 4: Holomorphic Consistency (Lyness-Moler vs. Dual Numbers)
-For any real-analytic function without branch cuts:
+For real-analytic functions within their holomorphic domain:
 $$\|J_{\text{dual}} - J_{\text{complex-step}}\|_\infty \le 5 \cdot \epsilon_{\text{mach}} \cdot \|J_{\text{dual}}\|_\infty$$
 
-**Verification Harness:** Asserts that the complex-step coordinate stencil matches exact forward dual-number arithmetic to machine precision without subtractive cancellation.
+**Verification Harness:** Confirms that the complex-step coordinate stencil evaluates identically to forward dual-number arithmetic within machine precision, certifying zero subtractive cancellation.
