@@ -178,7 +178,7 @@ print(f"Recommended Solver: {decomp.recommended_solver}")
 
 ## 7. Scientific Test-Driven Development (STDD) & Invariant Contracts
 
-In scientific software, unit testing against static magic numbers is insufficient. All primitives in `jaccanon` are validated against invariant contracts via `Hypothesis` property-based testing:
+All primitives in `jaccanon` are validated against invariant contracts via `Hypothesis` property-based testing:
 
 1. **Taylor Remainder Invariant:** First-order convergence test:
    $$\lim_{\|v\| \to 0} \frac{\|f(x + v) - f(x) - J \cdot v\|}{\|v\|} = 0, \quad \text{slope of } \log R(v) \text{ vs } \log \|v\| \to 2.0$$
@@ -192,11 +192,9 @@ In scientific software, unit testing against static magic numbers is insufficien
 
 ## 8. Citation
 
-If you use `jaccanon` in public scientific work or reproducible research, please cite:
-
 ```bibtex
 @software{jaccanon2026,
-  author = {Ed Phil and Flow},
+  author = {Edward Philips (Phosphene)},
   title = {jaccanon: An Executable Reference Canon for Vector Differentiation, Matrix Decomposition, and Non-Equilibrium Flows},
   year = {2026},
   url = {https://github.com/phosphene/jacobian-canon}
