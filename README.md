@@ -1,2 +1,2 @@
 # jacobian-canon
-anonical set of jacobian implementations in python
+Test Informed Reproducible Canonical Set of Jacobians
