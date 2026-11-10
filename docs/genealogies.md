@@ -7,7 +7,7 @@ created: 2026-11-10
 
 # Intellectual Genealogies of Vector Differentiation
 
-Numerical differentiation is not a single technique; it is a convergence of distinct intellectual traditions across analysis, numerical linear algebra, computational geometry, and programming language compilers.
+Numerical differentiation represents the convergence of four distinct intellectual traditions across mathematical analysis, numerical linear algebra, computational geometry, and compiler design.
 
 `jaccanon` organizes these traditions into four reproducible lineages:
 
@@ -18,9 +18,9 @@ Numerical differentiation is not a single technique; it is a convergence of dist
 Before decomposing external differentiation algorithms, `jaccanon` is grounded in three foundational structural lineages:
 
 ### 1. Order-Theoretic Algebra & The Epistemic Gap
-- **Core Invariant:** *Algebra does not calculate; numerical algorithms do.*
-- **Epistemic Principle:** Continuous algebra assumes infinite precision, exact symmetry, and unconstrained partial orders. Finite-precision floating-point arithmetic (IEEE 754) introduces non-associativity, roundoff noise, and artificial total ordering.
-- **Architectural Defense:** Rather than claiming to eliminate these tensions, `jaccanon` makes them legible and boundable: rigorous property-based testing (`Hypothesis`) and explicit condition budgeting ensure algebraic structures and partial incomparability are preserved without silent corruption.
+- **Core Invariant:** *Algebra calculates in infinite-precision symbols; numerical algorithms evaluate on finite silicon.*
+- **Epistemic Principle:** Continuous algebra formalizes partially ordered sets, exact symmetries, and coordinate-free morphisms. Finite-precision floating-point arithmetic (IEEE 754) introduces non-associative addition, roundoff limits, and memory-address total ordering.
+- **Architectural Execution:** `jaccanon` bounds and exposes these structural transitions through property-based testing (`Hypothesis`) and explicit condition budgets, certifying algebraic symmetries and partial-order incomparabilities directly within numerical state models.
 
 ### 2. Discrete Helmholtz Decomposition & Non-Conservative Operators
 - **Core Invariant:** The Discrete Helmholtz Decomposition Theorem ($J = S + A$).
@@ -54,13 +54,13 @@ Before decomposing external differentiation algorithms, `jaccanon` is grounded i
 - **Key Techniques:**
   - **Forward Mode:** Dual numbers $a + b\epsilon$ with $\epsilon^2 = 0$. Evaluates directional derivatives (JVP) alongside primal passes in $O(1)$ memory.
   - **Reverse Mode:** Wengert execution tape recording primal values, followed by reverse accumulation (VJP) in covector space. Evaluates gradients in $O(1)$ evaluations regardless of input dimension $n$.
-- **Core Trade-off:** Exact derivatives without truncation error, but reverse mode incurs an execution tape memory footprint proportional to operation count.
+- **Core Characteristics:** Delivers machine-precision derivatives with zero truncation error, scaling memory usage in reverse mode proportionally to computational graph depth.
 
 ---
 
 ## Lineage 3: Graph Compression & Matrix Sparsity
 - **Key Thinkers:** Curtis, Powell, and Reid (CPR, 1974), Thomas F. Coleman, Jorge Moré, Alex Pothen.
-- **Foundational Idea:** Real-world physical, biological, and dynamical Jacobians are sparse. Columns that do not share non-zero row indices can be evaluated simultaneously using a single perturbed seed vector.
+- **Foundational Principle:** Physical, biological, and dynamical Jacobians possess sparse connectivity. Structurally independent columns sharing no common non-zero row indices evaluate simultaneously through orthogonal partition seed vectors.
 - **Key Techniques:**
   - Distance-1 column coloring (CPR).
   - Distance-2 star coloring for bidirectional Jacobian accumulation.
@@ -71,9 +71,23 @@ Before decomposing external differentiation algorithms, `jaccanon` is grounded i
 
 ## Lineage 4: Compiler Intermediate Representation (IR) & Vectorized Transforms
 - **Key Thinkers:** Theano team, Dougal Maclaurin (Autograd), Roy Frostig, Matthew Johnson, Chris Lattner.
-- **Foundational Idea:** Treat differentiation as a higher-order program transformation at the compiler IR level rather than runtime tape tracing.
+- **Foundational Principle:** Evaluates differentiation as a higher-order functional transformation at the compiler Intermediate Representation (IR) level, executing pushforward (`jvp`) and pullback (`vjp`) primitives directly within fused hardware kernels.
 - **Key Techniques:**
   - Functional pushforward (`jvp`) and pullback (`vjp`) primitives.
   - Vectorizing maps (`vmap`) over batch dimensions.
   - Aspect-ratio dispatch: computing $J$ via `vmap(jvp)` when $n \le m$ (tall) or `vmap(vjp)` when $m < n$ (wide).
-- **Core Trade-off:** Maximum hardware acceleration and kernel fusion, but requires pure functional transformations and AST/IR tracing.
+- **Core Characteristics:** Delivers kernel-fused execution and SIMD/GPU throughput, requiring functional purity and static trace representations.
+
+---
+
+## Method Underwriting Synthesis
+
+`jaccanon` translates these lineages into verifiable numerical methods under the platform underwriting standard. Each lineage corresponds to a concrete verification obligation across Mathematics, Software, and Data:
+
+| Lineage | Mathematical Verification | Software Realization | Empirical Data Boundary |
+|---|---|---|---|
+| **0. Structural Foundations** | Helmholtz orthogonality $\langle S, A \rangle_F \equiv 0$; spectral splitting | Invariant static models; deterministic solver routing | Condition threshold $\rho < \epsilon_{\text{sym}}$ certification |
+| **1. Empirical Stencils** | Taylor remainder order scaling $O(h^p)$; Richardson error cancellation | Richardson tableau; complex-step dual stencils | Optimal step basin $h_{\text{opt}}$; cancellation tracking |
+| **2. Structural AD** | Pushforward / pullback duality $\langle u, \text{JVP} \rangle \equiv \langle \text{VJP}, v \rangle$ | Pure dual numbers; reverse Wengert tape accumulation | Graph operation depth; tape memory budget |
+| **3. Matrix Compression** | CPR distance-1 and distance-2 graph coloring theorems | Structural sparsity partitioners and decompressors | Chromatic compression ratio $\chi \ll n$ |
+| **4. Compiler IR Transforms** | Functional adjoint linear operators | Vectorized maps (`vmap`); aspect-ratio dispatch routers | Dimension threshold $n \le m$ vs. $m < n$ |
