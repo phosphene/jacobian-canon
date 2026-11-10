@@ -13,24 +13,24 @@ Numerical differentiation is not a single technique; it is a convergence of dist
 
 ---
 
-## Lineage 0: The Phosphene Foundations & Internal Test Benches
+## Lineage 0: Mathematical Foundations & Structural Lineages
 
-Before decomposing external algorithms, `jaccanon` is grounded in three foundational test benches developed within the Phosphene platform:
+Before decomposing external differentiation algorithms, `jaccanon` is grounded in three foundational structural lineages:
 
-### 1. `order-relations` & The Epistemic Gap
+### 1. Order-Theoretic Algebra & The Epistemic Gap
 - **Core Invariant:** *Algebra does not calculate; numerical algorithms do.*
-- **Epistemic Warning:** Continuous algebra assumes infinite precision, exact symmetry, and unconstrained partial orders. Finite-precision floating-point arithmetic (IEEE 754) introduces non-associativity, roundoff noise, and artificial total ordering.
-- **Architectural Defense:** Rigorous property-based testing (`Hypothesis`) and explicit condition budgeting ensure algebraic symmetries are preserved deterministically in memory.
+- **Epistemic Principle:** Continuous algebra assumes infinite precision, exact symmetry, and unconstrained partial orders. Finite-precision floating-point arithmetic (IEEE 754) introduces non-associativity, roundoff noise, and artificial total ordering.
+- **Architectural Defense:** Rather than claiming to eliminate these tensions, `jaccanon` makes them legible and boundable: rigorous property-based testing (`Hypothesis`) and explicit condition budgeting ensure algebraic structures and partial incomparability are preserved without silent corruption.
 
-### 2. The Foundry (`phosphene.equilibria`)
+### 2. Discrete Helmholtz Decomposition & Non-Conservative Operators
 - **Core Invariant:** The Discrete Helmholtz Decomposition Theorem ($J = S + A$).
 - **Physical Interpretation:**
   - $S = \frac{1}{2}(J + J^T)$: Dissipative sink dynamics (gradient flow toward potential minima).
-  - $A = \frac{1}{2}(J - J^T)$: Solenoidal rotational curl (entropy-preserving circulating torques; prevents mode collapse in multi-agent game equilibria and KL-regularized post-training).
+  - $A = \frac{1}{2}(J - J^T)$: Solenoidal rotational curl (entropy-preserving circulating torques; prevents mode collapse in multi-agent game equilibria and non-equilibrium steady states).
 - **Automated Routing:** Symmetrization metric $\rho = \|A\|_F / \|S\|_F < \epsilon_{\text{sym}}$ routes dynamically between conservative optimization and Korpelevich extragradient projection.
 
-### 3. `monograph-review` & Relaxation Dynamics
-- **Core Invariant:** Formal relaxation chain: Ising (1925) $\to$ Landau (1937) $\to$ Cusp (Thom 1972) $\to$ Relaxation formula:
+### 3. Critical Phenomena & Relaxation Dynamics
+- **Core Invariant:** Formal relaxation chain from statistical mechanics and catastrophe theory: Ising (1925) $\to$ Landau (1937) $\to$ Cusp (Thom 1972) $\to$ Relaxation formula:
   $$\frac{d\rho}{dt} = -k_1(\rho - \rho_1) - k_2(\rho - \rho_2)$$
 - **Role in `jaccanon`:** Establishes that dynamic equilibria are relaxation landscapes governed by energy potentials and rotational flows.
 
