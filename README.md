@@ -15,7 +15,7 @@ updated: 2026-11-10
 
 [![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD--3--Clause-blue.svg)](LICENSE)
 [![Python: 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)](pyproject.toml)
-[![Architecture: Phosphene DFT](https://img.shields.io/badge/architecture-DFT-success)](docs/architecture.md)
+[![Architecture: Diagnostic Contract](https://img.shields.io/badge/architecture-DFT-success)](docs/diagnostic-contract.md)
 
 ---
 
@@ -25,7 +25,7 @@ Abstract algebra has clean, coordinate-free invariants: morphisms compose, funct
 
 **However, numerical algorithms approximate.**
 
-Numerical methods in  Python libraries (`scipy`, `numpy`, `jax`, `casadi`), three structural tensions emerge immediately:
+When implementing numerical methods across Python libraries (`scipy`, `numpy`, `jax`, `casadi`), three fundamental structural tensions emerge immediately:
 
 1. **Continuous Algebra vs. Finite-Precision Floating Point (IEEE 754):**
    In algebra, the symmetric operator $S = \frac{1}{2}(J + J^T)$ is exactly self-adjoint ($S = S^T$). In IEEE 754 float64, non-associativity of addition and roundoff noise produce spurious asymmetries that break downstream solvers expecting exact symmetry.
@@ -34,7 +34,7 @@ Numerical methods in  Python libraries (`scipy`, `numpy`, `jax`, `casadi`), thre
 3. **Silent Cancellation and the Floating-Point U-Curve:**
    In pure calculus, $\lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$ approaches the exact derivative. On physical silicon, subtractive cancellation destroys up to 8–10 digits of significance as $h \to \epsilon_{\text{mach}}$, while truncation error dominates when $h$ is large.
 
-`jaccanon` is built to resolve this tension. It does not treat the Jacobian as an opaque black-box array; it provides an **executable reference canon** with explicit invariant contracts and complete observability of numerical error budgets upfront.
+`jaccanon` does not aim to eliminate or "solve" these structural tensions—in physical computation on finite silicon, they cannot be eliminated. Instead, `jaccanon` makes them **legible and boundable**. Rather than treating the Jacobian as an opaque black-box array of floats, `jaccanon` provides an **executable reference canon** with an explicit diagnostic contract, bounding truncation errors asymptotically, quantifying cancellation loss, and certifying matrix stability upfront.
 
 ---
 
@@ -109,14 +109,14 @@ Every differentiation primitive returns an immutable `JacobianResult` based on `
 
 ---
 
-## 5. Intellectual Genealogies & Phosphene Foundations
+## 5. Intellectual Genealogies
 
-`jaccanon` bridges four classical mathematical lineages with three internal foundational test benches developed within the Phosphene platform and the Research Stable:
+`jaccanon` bridges classical mathematical traditions and structural operator lineages into an executable reference canon (see [docs/genealogies.md](docs/genealogies.md)):
 
-### Foundational Phosphene Lineages
-1. **`order-relations` & The Epistemic Gap:** Codifies the boundary between abstract posets and finite floating-point execution (`work/flow/myth-study/wiki/concepts/order-relations-and-numerical-methods.md`).
-2. **The Foundry (`phosphene.equilibria`):** Implements the discrete Helmholtz decomposition ($J = S + A$) connecting dissipative potential sinks ($S$) and solenoidal rotational torques ($A$), automating routing between conservative gradient descent and non-conservative Korpelevich extragradient projection.
-3. **`monograph-review` (Relaxation Dynamics):** Grounded in the formal chain from Ising (1925) $\to$ Landau (1937) $\to$ Cusp (Thom 1972) $\to$ Relaxation dynamics ($d\rho/dt = -k_1(\rho-\rho_1) - k_2(\rho-\rho_2)$).
+### Foundational Mathematical Lineages
+1. **Order-Theoretic Algebra & The Epistemic Gap:** Preserving partial-order incomparability and lattice structures without forcing artificial total orderings onto IEEE 754 floating-point representations.
+2. **Operator Decomposition & Discrete Helmholtz Splitting:** Decomposing Jacobians ($J = S + A$) to isolate dissipative potential sinks ($S$) from solenoidal rotational torques ($A$), automating solver routing between conservative gradient descent and non-conservative Korpelevich extragradient projection.
+3. **Critical Phenomena & Relaxation Dynamics:** Grounded in formal relaxation dynamics from statistical mechanics and catastrophe theory (Ising $\to$ Landau $\to$ Thom Cusp), modeling multi-scale non-equilibrium flows.
 
 ### Classical Differentiation Genealogies
 
@@ -176,7 +176,7 @@ print(f"Recommended Solver: {decomp.recommended_solver}")
 
 ---
 
-## 7. Scientific Test-Driven Development (STDD) & Invariant Contracts
+## 8. Scientific Test-Driven Development (STDD) & Invariant Contracts
 
 All primitives in `jaccanon` are validated against invariant contracts via `Hypothesis` property-based testing:
 
@@ -190,11 +190,11 @@ All primitives in `jaccanon` are validated against invariant contracts via `Hypo
 
 ---
 
-## 8. Citation
+## 9. Citation
 
 ```bibtex
 @software{jaccanon2026,
-  author = {Edward Philips (Phosphene)},
+  author = {Edward Phillips (Phosphene)},
   title = {jaccanon: An Executable Reference Canon for Vector Differentiation, Matrix Decomposition, and Non-Equilibrium Flows},
   year = {2026},
   url = {https://github.com/phosphene/jacobian-canon}
