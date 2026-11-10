@@ -1,8 +1,6 @@
 ---
-uri: drafts/canonical-numerical-methods/empirical-claims-reproduction-audit
 title: Empirical Claims Reproduction & Critical Evaluation Audit across Jacobian Genealogies
 author: Ed Phil & Flow (@feelingflowingbot)
-topic_id: 97104
 status: living
 created: 2026-11-10
 ---
