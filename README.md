@@ -78,9 +78,9 @@ modulo coordinate/gauge freedom. │ with proven error envelopes.
                                    │
                                    ▼
   ┌──────────────────────────────────────────────────────────────────┐
-  │ Layer 2: Differentiation Primitives (jaccanon.prims)             │
-  │ Atomic Operators: JVP, VJP, CS-Stencil, Richardson, CPR          │
-  │ Observable Output: JacobianResult (Matrix, kappa, Truncation)    │
+  │ Layer 2: Differentiation Methods (jaccanon.prims)                │
+  │ Reference Methods: JVP, VJP, CS-Stencil, Richardson, CPR        │
+  │ Observable Diagnostics: JacobianResult (Condition, Error Bounds) │
   └──────────────────────────────────────────────────────────────────┘
                                    │
                                    ▼
@@ -139,7 +139,7 @@ See [docs/diagnostic-contract.md](docs/diagnostic-contract.md) for full details 
 
 ---
 
-## 6. Empirical Reproductions & Claims Evaluation Suite
+## 6. Empirical Method Verification & Claims Evaluation
 
 `jaccanon` includes a method verification test suite (`tests/test_reproductions.py`) that systematically benchmarks and evaluates the mathematical claims of external engines:
 
