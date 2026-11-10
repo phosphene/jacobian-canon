@@ -7,9 +7,9 @@ created: 2026-11-10
 
 # The Diagnostic Contract and Design for Testability (DFT)
 
-In scientific software design, **Design for Testability (DFT)** is derived from a fundamental platform ethos: **underwriting the reliability and insurance of inferential claims**.
+**Design for Testability (DFT)** defines testability as an intrinsic structural property of every operator, establishing the platform infrastructure that **underwrites the reliability and insurance of inferential claims**.
 
-### The Underwriting Analogy in Scientific Software
+### Scientific Software Underwriting
 Authors and domain scientists operate in the domain of *Discovery*—proposing novel inferential claims, forward models, and empirical fits. The platform and review teams operate in the domain of **underwriting the reliability and insurance of those claims**.
 
 Underwriting is the actuarial practice of assessing proposed risks prior to acceptance, establishing the operational envelope where coverage holds, and verifying empirical proof obligations. Applied to computational science:
