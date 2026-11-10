@@ -103,7 +103,7 @@ modulo coordinate/gauge freedom. │ with proven error envelopes.
 
 ## 4. The Diagnostic Contract & Design for Testability (DFT)
 
-Derived from safety-critical systems engineering and formal scientific review standards, **Design for Testability (DFT)** defines testability as an intrinsic structural property of every operator. Diagnostic observability, controllable perturbation parameters, and invariant contracts are embedded directly into the operator interface itself.
+**Design for Testability (DFT)** establishes testability as an intrinsic structural property of every operator. Operators embed diagnostic observability, controllable perturbation parameters, and invariant verification directly into their interface.
 
 In this architecture, the platform underwrites computational claims across three distinct vertices:
 1. **Mathematics:** Verifying operator invariants, algebraic dualities, and spectral limits ($J = S + A$, $\langle S, A \rangle_F = 0$, pushforward/pullback duality).
