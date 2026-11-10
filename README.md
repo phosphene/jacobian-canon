@@ -34,11 +34,11 @@ When implementing numerical methods across Python libraries (`scipy`, `numpy`, `
 3. **Silent Cancellation and the Floating-Point U-Curve:**
    In pure calculus, $\lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$ approaches the exact derivative. On physical silicon, subtractive cancellation destroys up to 8–10 digits of significance as $h \to \epsilon_{\text{mach}}$, while truncation error dominates when $h$ is large.
 
-`jaccanon` does not aim to eliminate or "solve" these structural tensions—in physical computation on finite silicon, they cannot be eliminated. Instead, `jaccanon` makes them **legible and boundable under the ethos of scientific review and platform testability**.
+`jaccanon` makes these structural tensions **legible and boundable under the ethos of scientific review and platform testability**.
 
-In scientific computing, authors and domain researchers are in the business of *Discovery*—proposing novel inferential claims and forward models. The platform and review layer is in a different business: **underwriting the reliability and insurance of those claims**. Underwriting means assessing proposed computational risks before accepting them, defining the explicit conditions under which reliance holds, and verifying that the code does not claim coverage beyond what has been tested.
+In scientific computing, authors and domain researchers operate in the domain of *Discovery*—proposing novel inferential claims and forward models. The platform and review layer operates in the domain of **underwriting the reliability and insurance of those claims**. Underwriting establishes the quantified validity of computational results before acceptance: defining the explicit operational envelope where reliance holds, pricing proof obligations against failure severity, and restricting coverage strictly to stated, empirically verified regimes.
 
-Rather than treating the Jacobian as an opaque black-box array of floats, `jaccanon` realizes this underwriting role through **Design for Testability (DFT)**: providing an **executable reference canon** with an explicit diagnostic contract, bounding truncation errors asymptotically, quantifying cancellation loss, and certifying matrix stability upfront.
+`jaccanon` realizes this underwriting role through **Design for Testability (DFT)**: providing an **executable reference canon** with an explicit diagnostic contract that quantifies asymptotic truncation error bounds, measures subtractive cancellation loss, and certifies matrix condition stability at execution time.
 
 ---
 
@@ -103,7 +103,7 @@ modulo coordinate/gauge freedom. │ with proven error envelopes.
 
 ## 4. The Diagnostic Contract & Design for Testability (DFT)
 
-Borrowing from safety-critical systems engineering and formal review standards, `jaccanon` enforces **Design for Testability (DFT)**: testability is not an external audit added after execution, but a structural property built into every operator.
+Derived from safety-critical systems engineering and formal scientific review standards, **Design for Testability (DFT)** defines testability as an intrinsic structural property of every operator. Diagnostic observability, controllable perturbation parameters, and invariant contracts are embedded directly into the operator interface itself.
 
 In this architecture, the platform underwrites computational claims across three distinct vertices:
 1. **Mathematics:** Verifying operator invariants, algebraic dualities, and spectral limits ($J = S + A$, $\langle S, A \rangle_F = 0$, pushforward/pullback duality).
