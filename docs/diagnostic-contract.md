@@ -10,24 +10,24 @@ created: 2026-11-10
 In scientific software design, **Design for Testability (DFT)** is derived from a fundamental platform ethos: **underwriting the reliability and insurance of inferential claims**.
 
 ### The Underwriting Analogy in Scientific Software
-Authors and domain scientists are in the business of *Discovery*—proposing new inferential claims, forward models, and empirical fits. The platform and review teams are in a fundamentally different business: they **underwrite the reliability of those claims**.
+Authors and domain scientists operate in the domain of *Discovery*—proposing novel inferential claims, forward models, and empirical fits. The platform and review teams operate in the domain of **underwriting the reliability and insurance of those claims**.
 
-Underwriting is the established actuarial practice of assessing proposed risks before accepting them, defining the explicit conditions under which coverage holds, and enforcing proof obligations. Applied to computational science:
+Underwriting is the actuarial practice of assessing proposed risks prior to acceptance, establishing the operational envelope where coverage holds, and verifying empirical proof obligations. Applied to computational science:
 - **The proposed risk:** The inferential claim, parameter estimate, or forward model seeking coverage.
-- **Coverage:** Reliance—being cited, published, deployed, or used as a trusted basis for downstream pipelines.
-- **Underwriting:** The rigorous assessment of whether the computational implementation realizes the stated mathematical and empirical claims.
-- **The proof obligation (premium):** The invariant testing, condition budgeting, and error-bound verification that the operator must survive before coverage is granted.
-- **The policy:** The stated-and-tested operational boundary—a claim is covered strictly under the conditions it has tested, and never beyond them.
+- **Coverage:** Reliance—being cited, published, deployed, or used as a trusted foundation for downstream pipelines.
+- **Underwriting:** The systematic evaluation verifying that the computational implementation faithfully realizes the stated mathematical and empirical assertions.
+- **The proof obligation (premium):** The suite of invariant tests, condition budgets, and error-bound certifications that the operator must satisfy to obtain coverage.
+- **The policy:** The bounded operational envelope—coverage applies to specifically verified parameter spaces and precision regimes.
 
-A claim that has not passed its underwriting verification is not refuted; it is simply not yet covered, and remains untrusted.
+Claims awaiting underwriting verification remain classified as provisional and uncertified.
 
 ### The Three Vertices of Underwriting
 Every numerical operator in `jaccanon` is underwritten across three independent vertices:
-1. **Mathematics:** The equations, operator dualities, and spectral decompositions ($J = S + A$, $\langle S, A \rangle_F = 0$, pushforward/pullback duality).
-2. **Software (Implementation):** The code itself—ensuring algorithms expose their conditioning, precision limits, and convergence behavior without silent workarounds.
-3. **Data / Numerical Inputs:** Empirical perturbations, condition numbers, and floating-point representations (IEEE 754).
+1. **Mathematics:** The formal equations, algebraic dualities, and spectral decompositions ($J = S + A$, $\langle S, A \rangle_F = 0$, pushforward/pullback duality).
+2. **Software (Implementation):** The executable implementation—ensuring algorithms explicitly surface condition numbers, error bounds, and convergence rates through typed return types.
+3. **Data / Numerical Inputs:** The empirical perturbations, domain meshes, and IEEE 754 floating-point representations.
 
-Because silent corruption is ubiquitous in numerical routines—subtractive cancellation, catastrophic truncation, ill-conditioning ($\kappa(J) \gg 10^8$), and pseudo-derivatives at non-differentiable cusps—`jaccanon` enforces an explicit **Diagnostic Contract** across every primitive.
+Because finite precision arithmetic introduces subtractive cancellation, truncation drift, ill-conditioning ($\kappa(J) \gg 10^8$), and non-differentiable cusps, `jaccanon` implements an explicit **Diagnostic Contract** across every primitive.
 
 ---
 
