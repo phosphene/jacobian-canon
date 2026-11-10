@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main, feat/*, "**/feat/*"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+
+    steps:
+      - name: Checkout jacobian-canon
+        uses: actions/checkout@v4
+
+      - name: Checkout phosphene/woodchipper for phosphene-core
+        uses: actions/checkout@v4
+        with:
+          repository: phosphene/woodchipper
+          path: _woodchipper
+          sparse-checkout: |
+            lib/python/core
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ./_woodchipper/lib/python/core
+          pip install ".[test]" scipy torch sympy
+
+      - name: Run pytest with Hypothesis and coverage
+        run: |
+          pytest -v --durations=10
