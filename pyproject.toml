@@ -16,6 +16,7 @@ authors = [
 dependencies = [
     "numpy>=1.26.0",
     "pydantic>=2.7.0",
+    "scipy>=1.17.1",
 ]
 
 [project.optional-dependencies]
@@ -29,3 +30,9 @@ test = [
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/jaccanon", "src/phosphene"]
+
+[dependency-groups]
+dev = [
+    "hypothesis>=6.170.15",
+    "pytest>=9.2.0",
+]

@@ -2,7 +2,7 @@
 
 import numpy as np
 import pytest
-from hypothesis import given, settings
+from hypothesis import given, settings, target
 from hypothesis import strategies as st
 
 from jaccanon.prims.complex_step import jacobian_complex_step
@@ -76,12 +76,17 @@ def test_richardson_high_precision_extrapolation():
     assert res.estimated_truncation_error < 1e-10
 
 
-@settings(max_examples=30)
+@settings(max_examples=50)
 @given(
-    st.floats(min_value=-2.0, max_value=2.0, allow_nan=False, allow_infinity=False),
-    st.floats(min_value=-2.0, max_value=2.0, allow_nan=False, allow_infinity=False),
+    x0_val=st.floats(min_value=-2.0, max_value=2.0, allow_nan=False, allow_infinity=False, allow_subnormal=False),
+    x1_val=st.floats(min_value=-2.0, max_value=2.0, allow_nan=False, allow_infinity=False, allow_subnormal=False),
 )
-def test_hypothesis_complex_step_vs_richardson_consistency(x0_val, x1_val):
+def test_hypothesis_complex_step_vs_richardson_consistency(x0_val: float, x1_val: float):
+    """Calibrate Richardson extrapolation against complex-step differentiation oracle.
+    
+    Exposes matrix L-inf discrepancy directly to hypothesis.target() to search for worst-case
+    Taylor truncation or step cancellation.
+    """
     # Smooth analytic function: f(x) = [sin(x0) + cos(x1), exp(0.5*x0)]
     def f(x):
         return np.array([
@@ -96,5 +101,7 @@ def test_hypothesis_complex_step_vs_richardson_consistency(x0_val, x1_val):
     J_cs = np.array(res_cs.matrix)
     J_rich = np.array(res_rich.matrix)
 
-    # Both independent methods must agree to within 1e-10 across continuous parameter space
+    # Both independent methods must agree to within 1e-9 across continuous parameter space
+    linf_defect = float(np.max(np.abs(J_cs - J_rich)))
+    target(linf_defect, label="richardson_vs_complex_step_linf_defect")
     np.testing.assert_allclose(J_cs, J_rich, rtol=1e-9, atol=1e-9)
