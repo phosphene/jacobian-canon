@@ -1,31 +1,13 @@
----
-uri: phosphene.canon/jaccanon
-owner: edphos
-status: active
-license: BSD-3-Clause
-lineage:
-  - order-relations
-  - phosphene.equilibria
-  - monograph-review
-updated: 2026-11-10
----
-
 # `jaccanon` — The Jacobian Canon
 ## Canonical Numerical Methods for Vector Differentiation, Matrix Decomposition, and Non-Equilibrium Flows
 
-[![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD--3--Clause-blue.svg)](LICENSE)
-[![Python: 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)](pyproject.toml)
-[![Architecture: Diagnostic Contract](https://img.shields.io/badge/architecture-DFT-success)](docs/diagnostic-contract.md)
-
----
-
 ## 1. The tension between algebra and implementation
 
-Abstract algebra has clean, coordinate-free invariants: morphisms compose, functors preserve structure, partially ordered sets formalize causal lineages, and symmetric/antisymmetric operators cleanly partition vector spaces.
+Abstract algebra is clean in its coordinate-free invariance: morphisms compose, functors preserve structure, partially ordered sets formalize causal lineages, and symmetric/antisymmetric operators cleanly partition vector spaces.
 
-**However, numerical algorithms approximate.**
+**Numerical algorithms approximate.**
 
-When implementing numerical methods across Python libraries (`scipy`, `numpy`, `jax`, `casadi`), three fundamental structural tensions emerge immediately:
+Numerical methods in Python libraries (`scipy`, `numpy`, `jax`, `casadi`), are subject to three fundamental structural tensions:
 
 1. **Continuous Algebra vs. Finite-Precision Floating Point (IEEE 754):**
    In algebra, the symmetric operator $S = \frac{1}{2}(J + J^T)$ is exactly self-adjoint ($S = S^T$). In IEEE 754 float64, non-associativity of addition and roundoff noise produce spurious asymmetries that break downstream solvers expecting exact symmetry.
@@ -34,11 +16,11 @@ When implementing numerical methods across Python libraries (`scipy`, `numpy`, `
 3. **Silent Cancellation and the Floating-Point U-Curve:**
    In pure calculus, $\lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$ approaches the exact derivative. On physical silicon, subtractive cancellation destroys up to 8–10 digits of significance as $h \to \epsilon_{\text{mach}}$, while truncation error dominates when $h$ is large.
 
-`jaccanon` makes these structural tensions **legible and boundable under the ethos of scientific review and platform testability**.
+`jaccanon` attempts to make structural tension **legible and boundable under reproduction and test**.
 
-In scientific computing, authors and domain researchers operate in the domain of *Discovery*—proposing novel inferential claims and forward models. The platform and review layer operates in the domain of **underwriting the reliability and insurance of those claims**. Underwriting establishes the quantified validity of computational results before acceptance: defining the explicit operational envelope where reliance holds, pricing proof obligations against failure severity, and restricting coverage strictly to stated, empirically verified regimes.
+Domain researchers operate in the domain of *Discovery*—proposing novel inferential claims and forward models. The platform operates in the domain of **underwriting the reliability and insurance of those claims**, by defining operational envelopes, pricing proof obligations against risk, and restricting scope to stated, empirically verifiable bounds.
 
-`jaccanon` realizes this underwriting role through **Design for Testability (DFT)**: providing **canonical numerical methods** with an explicit diagnostic contract that quantifies asymptotic truncation error bounds, measures subtractive cancellation loss, and certifies matrix condition stability at execution time.
+`jaccanon` uses **Design for Testability (DFT)**: providing **canonical numerical methods** with an explicit diagnostic contracts to quantify asymptotic truncation error bounds, measure subtractive cancellation loss, and converge on matrix condition stability at execution time.
 
 ---
 
